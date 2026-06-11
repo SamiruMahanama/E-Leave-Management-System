@@ -1,3 +1,5 @@
+import Layout from "./components/Layout";
+
 import {
     BrowserRouter,
     Routes,
@@ -14,27 +16,16 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/"
-                    element={<LoginPage />}
-                />
+                <Route path="/" element={<LoginPage />}/>
 
-                <Route
-                    path="/dashboard"
-                    element={<DashboardPage />}
-                />
-                <Route
-    path="/apply-leave"
-    element={<ApplyLeavePage />}
-/>
-                <Route
-    path="/leave-history"
-    element={<LeaveHistoryPage />}
-/>
-<Route
-    path="/profile"
-    element={<ProfilePage />}
-/>
+                <Route path="/dashboard" element={<Layout><DashboardPage /></Layout>}/>
+
+                <Route path="/apply-leave" element={<Layout><ApplyLeavePage /></Layout>}/>
+
+                <Route path="/leave-history" element={<Layout><LeaveHistoryPage /></Layout>}/>
+
+                <Route path="/profile" element={<Layout><ProfilePage /></Layout>}/>
+
             </Routes>
             
         </BrowserRouter>

@@ -1,23 +1,12 @@
 import DashboardCard from "../components/DashboardCard";
-import "../styles/DashboardPage.css";
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function DashboardPage() {
 
 const navigate = useNavigate();
-const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
-    <div className="dashboard-page">
-      <Navbar />
-
-      <div className="dashboard-layout">
-        <Sidebar />
-
-        <main className="dashboard-content">
+    <>
           <h1>Dashboard</h1>
 
           <p>Welcome to the E Leave Management System Dashboard.</p>
@@ -54,35 +43,8 @@ const [showLogoutModal, setShowLogoutModal] = useState(false);
     </button>
 
 </div>
-        </main>
-      </div>
+</>
 
-      {
-    showLogoutModal && (
-
-        <div>
-
-            <h2>Confirm Logout</h2>
-
-            <p>
-                Are you sure you want to logout?
-            </p>
-
-            <button
-    onClick={() => setShowLogoutModal(false)}
->
-    Cancel
-</button>
-
-            <button>
-                Logout
-            </button>
-
-        </div>
-
-    )
-}
-    </div>
   );
 }
 

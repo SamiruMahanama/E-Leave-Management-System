@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "../styles/Modal.css";
 
 function Sidebar() {
   const navigate = useNavigate();
