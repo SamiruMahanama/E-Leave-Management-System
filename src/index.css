@@ -1,4 +1,29 @@
-body {
-  font-family: 'Playfair Display', serif;
+:root {
+  /* Brand */
+  --color-primary: #7c3aed; /* vivid purple — buttons, headers */
+  --color-primary-light: #ede9fe; /* very light purple — sidebar, card backgrounds */
+  --color-primary-dark: #5b21b6; /* dark purple — hover states */
+
+  /* Text */
+  --color-text: #1f2937; /* near black — main text */
+  --color-text-muted: #6b7280; /* grey — labels, subtitles */
+
+  /* Backgrounds */
+  --color-background: #f5f3ff; /* very light purple tint — page background */
+  --color-white: #ffffff; /* cards, modals, table rows */
+
+  /* Status colours — for leave badges */
+  --color-success: #166534; /* approved text */
+  --color-success-bg: #dcfce7; /* approved background */
+  --color-danger: #991b1b; /* rejected text */
+  --color-danger-bg: #fee2e2; /* rejected background */
+  --color-warning: #854d0e; /* pending text */
+  --color-warning-bg: #fef9c3; /* pending background */
+
+  /* Border */
+  --color-border: #ddd6fe; /* light purple border */
 }
 
+body {
+  font-family: "Playfair Display", serif;
+}
