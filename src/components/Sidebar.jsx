@@ -10,11 +10,21 @@ function Sidebar() {
     <>
       <aside className="sidebar">
         <ul>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/apply-leave")}>Apply Leave</li>
-          <li onClick={() => navigate("/leave-history")}>Leave History</li>
-          <li onClick={() => navigate("/profile")}>Profile</li>
-          <li onClick={() => setShowLogoutModal(true)}>Logout</li>
+          <li className="sidebar-item" onClick={() => navigate("/dashboard")}>
+            Dashboard
+          </li>
+          <li className="sidebar-item" onClick={() => navigate("/apply-leave")}>
+            Apply Leave
+          </li>
+          <li className="sidebar-item" onClick={() => navigate("/leave-history")}>
+            Leave History
+          </li>
+          <li className="sidebar-item" onClick={() => navigate("/profile")}>
+            Profile
+          </li>
+          <li className="sidebar-item" onClick={() => setShowLogoutModal(true)}>
+            Logout
+          </li>
         </ul>
       </aside>
 

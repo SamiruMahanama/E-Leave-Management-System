@@ -1,7 +1,8 @@
 import { useState } from "react";
+import "../styles/ApplyLeavePage.css";
 
 function ApplyLeavePage() {
-  const [leaveType, setLeaveType] = useState("");
+  const [leaveType, setLeaveType] = useState("Annual Leave");
 
   const [startDate, setStartDate] = useState("");
 
@@ -18,7 +19,6 @@ function ApplyLeavePage() {
 
     if (endDate < startDate) {
       setError("End date cannot be before start date.");
-
       return;
     }
 
@@ -29,65 +29,55 @@ function ApplyLeavePage() {
   };
 
   return (
-    <div>
-      <h1>Apply Leave</h1>
+    <div className="apply-leave-container">
+      <h1 className="page-title">Apply Leave</h1>
 
       {error && <p className="error-message">{error}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Leave Type</label>
-        </div>
-
-        <div>
+      <form className="apply-leave-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="leaveType">Leave Type</label>
           <select
+            id="leaveType"
             value={leaveType}
             onChange={(event) => setLeaveType(event.target.value)}
           >
-            <option>Annual Leave</option>
-
-            <option>Medical Leave</option>
-
-            <option>Casual Leave</option>
+            <option value="Annual Leave">Annual Leave</option>
+            <option value="Medical Leave">Medical Leave</option>
+            <option value="Casual Leave">Casual Leave</option>
           </select>
         </div>
 
-        <div>
-          <label>Start Date</label>
-        </div>
-
-        <div>
+        <div className="form-group">
+          <label htmlFor="startDate">Start Date</label>
           <input
+            id="startDate"
             type="date"
             value={startDate}
             onChange={(event) => setStartDate(event.target.value)}
           />
         </div>
 
-        <div>
-          <label>End Date</label>
-        </div>
-
-        <div>
+        <div className="form-group">
+          <label htmlFor="endDate">End Date</label>
           <input
+            id="endDate"
             type="date"
             value={endDate}
             onChange={(event) => setEndDate(event.target.value)}
           />
         </div>
 
-        <div>
-          <label>Reason</label>
-        </div>
-
-        <div>
+        <div className="form-group">
+          <label htmlFor="reason">Reason</label>
           <textarea
+            id="reason"
             value={reason}
             onChange={(event) => setReason(event.target.value)}
           />
         </div>
 
-        <button type="submit">Submit Request</button>
+        <button type="submit" className="submit-button">Submit Request</button>
       </form>
     </div>
   );
