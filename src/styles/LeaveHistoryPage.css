@@ -1,24 +1,16 @@
 .leave-table {
   width: 100%;
-
   border-collapse: collapse;
-
   background-color: var(--color-white);
-
   box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.1);
-
   border-radius: 12px;
-
   overflow: hidden;
+  text-align: center;
 }
 
 .leave-table th {
   background-color: var(--color-primary-light);
-
   color: var(--color-primary);
-
-  text-align: left;
-
   padding: 15px;
   border-bottom: 1px solid var(--color-border);
   font-weight: 600;
@@ -26,8 +18,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: center;
-  
-  
 }
 
 .leave-table td {
@@ -60,4 +50,9 @@
 .status-pending {
   background-color: var(--color-warning-bg);
   color: var(--color-warning);
+}
+
+.leave-table {
+  table-layout: fixed;
+  width: 100%;
 }
