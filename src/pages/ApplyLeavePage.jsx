@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../styles/ApplyLeavePage.css";
+import axios from "axios";
 
 function ApplyLeavePage() {
   const [leaveType, setLeaveType] = useState("Annual Leave");
@@ -12,7 +13,7 @@ function ApplyLeavePage() {
 
   const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     setError("");
 
     event.preventDefault();
@@ -22,10 +23,28 @@ function ApplyLeavePage() {
       return;
     }
 
-    console.log("Leave Type:", leaveType);
-    console.log("Start Date:", startDate);
-    console.log("End Date:", endDate);
-    console.log("Reason:", reason);
+    try {
+      await axios.post("http://localhost:8080/leave-requests", {
+        employeeId: "EMP001",
+        leaveType,
+        startDate,
+        endDate,
+        numberOfDays: 3,
+        reason,
+      });
+
+      alert("Leave request submitted successfully!");
+
+      setLeaveType("");
+      setStartDate("");
+      setEndDate("");
+      setReason("");
+      setError("");
+    } catch (error) {
+      console.error(error);
+
+      setError("Failed to submit leave request.");
+    }
   };
 
   return (
@@ -77,7 +96,9 @@ function ApplyLeavePage() {
           />
         </div>
 
-        <button type="submit" className="submit-button">Submit Request</button>
+        <button type="submit" className="submit-button">
+          Submit Request
+        </button>
       </form>
     </div>
   );

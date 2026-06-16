@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  
 }
 
 .logout-modal-content {
@@ -27,5 +26,5 @@
   width: 400px;
   height: 200px;
   gap: 20px;
-
+  transition: background-color 0.3s ease;
 }

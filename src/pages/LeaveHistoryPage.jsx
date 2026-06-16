@@ -1,32 +1,25 @@
 import "../styles/LeaveHistoryPage.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function LeaveHistoryPage() {
-  const leaveRequests = [
-    {
-      leaveType: "Annual",
-      startDate: "15 Jun 2026",
-      endDate: "17 Jun 2026",
-      days: 3,
-      status: "Pending",
-      remarks: "Awaiting manager approval",
-    },
-    {
-      leaveType: "Medical",
-      startDate: "02 Jun 2026",
-      endDate: "02 Jun 2026",
-      days: 1,
-      status: "Approved",
-      remarks: "Get well soon",
-    },
-    {
-      leaveType: "Casual",
-      startDate: "28 May 2026",
-      endDate: "28 May 2026",
-      days: 1,
-      status: "Rejected",
-      remarks: "Peak workload during period",
-    },
-  ];
+  const [leaveRequests, setLeaveRequests] = useState([]);
+
+  useEffect(() => {
+    const fetchLeaveRequests = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/leave-requests",
+        );
+        setLeaveRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching leave requests:", error);
+      }
+    };
+
+    fetchLeaveRequests();
+  }, []);
+
   return (
     <div>
       <h1>Leave History</h1>
@@ -49,25 +42,23 @@ function LeaveHistoryPage() {
         </thead>
 
         <tbody>
-          {leaveRequests.map((request, index) => (
-            <tr key={index}>
-              <td>{request.leaveType}</td>
+          {leaveRequests.map((leave) => (
+            <tr key={leave.id}>
+              <td className="leave-type">{leave.leaveType}</td>
 
-              <td>{request.startDate}</td>
+              <td>{leave.startDate}</td>
 
-              <td>{request.endDate}</td>
+              <td>{leave.endDate}</td>
 
-              <td>{request.days}</td>
+              <td>{leave.numberOfDays}</td>
 
-              <td>
-                <span
-                  className={`status-badge status-${request.status.toLowerCase()}`}
-                >
-                  {request.status}
+              <td className="leave-status">
+                <span className={`status-badge status-${leave.status.toLowerCase()}`}>
+                  {leave.status}
                 </span>
               </td>
 
-              <td>{request.remarks}</td>
+              <td>{leave.managerRemarks || "-"}</td>
             </tr>
           ))}
         </tbody>
