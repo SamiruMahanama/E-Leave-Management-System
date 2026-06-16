@@ -1,4 +1,5 @@
 import Layout from "./components/Layout";
+import ManagerApprovalPage from "./pages/ManagerApprovalPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -46,6 +47,14 @@ function App() {
           element={
             <Layout>
               <ProfilePage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/manager-approval"
+          element={
+            <Layout>
+              <ManagerApprovalPage />
             </Layout>
           }
         />

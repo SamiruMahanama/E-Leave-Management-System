@@ -6,6 +6,9 @@ function Sidebar() {
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
+  // Assuming user is stored in localStorage after login
+  const user = JSON.parse(localStorage.getItem("user")) || { role: "USER" }; // Fallback to avoid breaking if not logged in
+
   return (
     <>
       <aside className="sidebar">
@@ -16,12 +19,23 @@ function Sidebar() {
           <li className="sidebar-item" onClick={() => navigate("/apply-leave")}>
             Apply Leave
           </li>
-          <li className="sidebar-item" onClick={() => navigate("/leave-history")}>
+          <li
+            className="sidebar-item"
+            onClick={() => navigate("/leave-history")}
+          >
             Leave History
           </li>
           <li className="sidebar-item" onClick={() => navigate("/profile")}>
             Profile
           </li>
+          {user?.role === "MANAGER" && (
+            <li
+              className="sidebar-item"
+              onClick={() => navigate("/manager-approval")}
+            >
+              Manager Approval
+            </li>
+          )}
           <li className="sidebar-item" onClick={() => setShowLogoutModal(true)}>
             Logout
           </li>
