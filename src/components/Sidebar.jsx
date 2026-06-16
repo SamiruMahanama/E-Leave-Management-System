@@ -4,6 +4,7 @@ import "../styles/Modal.css";
 
 function Sidebar() {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   // Assuming user is stored in localStorage after login
@@ -49,7 +50,14 @@ function Sidebar() {
             <p>Are you sure you want to logout?</p>
 
             <button onClick={() => setShowLogoutModal(false)}>Cancel</button>
-            <button onClick={() => navigate("/")}>Logout</button>
+            <button
+              onClick={() => {
+                localStorage.removeItem("user");
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
           </div>
         </div>
       )}

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/LoginPage.css";
+import axios from "axios";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -8,13 +9,35 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
+
     event.preventDefault();
 
-    console.log("Username:", username);
-    console.log("Password:", password);
-    navigate("/dashboard");
-  };
+    try {
+
+        const response = await axios.post(
+            "http://localhost:8080/auth/login",
+            {
+                employeeId: username,
+                password: password
+            }
+        );
+
+        localStorage.setItem(
+            "user",
+            JSON.stringify(response.data)
+        );
+
+        navigate("/dashboard");
+
+    }
+    catch (error) {
+
+        alert("Invalid Employee ID or Password");
+
+    }
+
+};
 
   return (
     <div className="login-container">

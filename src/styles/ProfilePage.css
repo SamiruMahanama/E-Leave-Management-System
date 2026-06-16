@@ -1,0 +1,45 @@
+.profile-container {
+  padding: 20px;
+}
+
+.profile-card {
+  background-color: var(--color-primary-light);
+  color: var(--color-text);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-title {
+  text-align: center;
+  color: var(--color-primary-dark);
+  margin-bottom: 24px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-field:last-child {
+  border-bottom: none;
+}
+
+.profile-label {
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.profile-value {
+  color: var(--color-primary);
+}   
