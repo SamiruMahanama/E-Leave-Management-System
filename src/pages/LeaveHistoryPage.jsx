@@ -11,6 +11,11 @@ function LeaveHistoryPage() {
         const response = await axios.get(
           "http://localhost:8080/leave-requests",
         );
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        const employeeResponse = await axios.get(
+          `http://localhost:8080/leave-requests/employee/${user.employeeId}`,
+        );
         setLeaveRequests(response.data);
       } catch (error) {
         console.error("Error fetching leave requests:", error);
@@ -53,7 +58,9 @@ function LeaveHistoryPage() {
               <td>{leave.numberOfDays}</td>
 
               <td className="leave-status">
-                <span className={`status-badge status-${leave.status.toLowerCase()}`}>
+                <span
+                  className={`status-badge status-${leave.status.toLowerCase()}`}
+                >
                   {leave.status}
                 </span>
               </td>
