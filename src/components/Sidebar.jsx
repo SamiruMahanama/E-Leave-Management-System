@@ -36,6 +36,9 @@ function Sidebar() {
               Manager Approval
             </li>
           )}
+          {user?.role === "MANAGER" && (
+            <li onClick={() => navigate("/leave-reports")}>Leave Reports</li>
+          )}
           <li className="sidebar-item" onClick={() => setShowLogoutModal(true)}>
             Logout
           </li>

@@ -1,13 +1,12 @@
 import Layout from "./components/Layout";
 import ManagerApprovalPage from "./pages/ManagerApprovalPage";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import ApplyLeavePage from "./pages/ApplyLeavePage";
 import LeaveHistoryPage from "./pages/LeaveHistoryPage";
 import ProfilePage from "./pages/ProfilePage";
+import LeaveReportPage from "./pages/LeaveReportPage";
 
 function App() {
   return (
@@ -55,6 +54,14 @@ function App() {
           element={
             <Layout>
               <ManagerApprovalPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/leave-reports"
+          element={
+            <Layout>
+              <LeaveReportPage />
             </Layout>
           }
         />
