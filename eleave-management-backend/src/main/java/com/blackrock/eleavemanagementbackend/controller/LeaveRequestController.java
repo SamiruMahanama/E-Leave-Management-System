@@ -4,6 +4,7 @@ import com.blackrock.eleavemanagementbackend.entity.LeaveRequest;
 import com.blackrock.eleavemanagementbackend.repository.LeaveRequestRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -81,5 +82,23 @@ public class LeaveRequestController {
         return leaveRequestRepository
                 .findByEmployeeId(employeeId);
 
+    }
+
+    @GetMapping("/report")
+    public List<LeaveRequest> generateReport(
+            @RequestParam int month,
+            @RequestParam int year) {
+
+        LocalDate startDate =
+                LocalDate.of(year, month, 1);
+
+        LocalDate endDate =
+                startDate.withDayOfMonth(
+                        startDate.lengthOfMonth());
+
+        return leaveRequestRepository
+                .findByStartDateBetween(
+                        startDate,
+                        endDate);
     }
 }
